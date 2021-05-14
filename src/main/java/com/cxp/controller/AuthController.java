@@ -3,6 +3,8 @@ package com.cxp.controller;
 import cn.hutool.core.map.MapUtil;
 import com.cxp.common.lang.Const;
 import com.cxp.common.lang.HttpResult;
+import com.cxp.entity.SysUser;
+import com.cxp.service.SysUserService;
 import com.cxp.utils.RedisUtil;
 import com.google.code.kaptcha.Producer;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +16,7 @@ import sun.misc.BASE64Encoder;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.security.Principal;
 import java.util.UUID;
 
 /**
@@ -29,6 +32,10 @@ public class AuthController extends BaseController {
     private Producer producer;
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    private SysUserService sysUserService;
+
+
 
     /**
      * 图片验证码
@@ -50,4 +57,23 @@ public class AuthController extends BaseController {
                 .put("token", key)
                 .put("base64Img", base64Img).build());
     }
+
+    /**
+	 * 获取用户信息接口
+	 * @param principal
+	 * @return
+	 */
+	@GetMapping("/sys/userInfo")
+	public HttpResult userInfo(Principal principal) {
+
+		SysUser sysUser = sysUserService.getByUsername(principal.getName());
+
+		return HttpResult.succ(MapUtil.builder()
+				.put("id", sysUser.getId())
+				.put("username", sysUser.getUsername())
+				.put("avatar", sysUser.getAvatar())
+				.put("created", sysUser.getCreated())
+				.map()
+		);
+	}
 }

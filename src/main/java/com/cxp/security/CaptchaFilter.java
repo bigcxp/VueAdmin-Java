@@ -54,11 +54,10 @@ public class CaptchaFilter extends OncePerRequestFilter {
 		if (StringUtils.isBlank(code) || StringUtils.isBlank(key)) {
 			throw new CaptchaException("验证码错误");
 		}
-
-		if (!code.equals(redisUtil.hget(Const.CAPTCHA_KEY, key))) {
+		Object hget = redisUtil.hget(Const.CAPTCHA_KEY, key);
+		if (!code.equals(hget.toString())) {
 			throw new CaptchaException("验证码错误");
 		}
-
 		// 一次性使用
 		redisUtil.hdel(Const.CAPTCHA_KEY, key);
 	}
