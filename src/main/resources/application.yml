@@ -1,0 +1,35 @@
+server:
+  port: 9000
+
+#数据库设置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vueadmin?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: meehoo
+#sercurity 默认密码
+  security:
+    user:
+      name: user
+      password: 111111
+#redis配置
+  redis:
+    database: 0
+    host: 127.0.0.1
+    username:
+    password:
+    connect-timeout: 2000
+    port: 6379
+
+#mybatis配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+
+
+cxp:
+  jwt:
+    header: Authorization
+    expire: 604800 #7天，秒单位
+    secret: ji8n3439n439n43ld9ne9343fdfer49h
+

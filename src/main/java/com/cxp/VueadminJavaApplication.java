@@ -1,0 +1,15 @@
+package com.cxp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+public class VueadminJavaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(VueadminJavaApplication.class, args);
+        System.out.print("-------------------启动成功-------------------");
+    }
+
+}
