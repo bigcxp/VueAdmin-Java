@@ -30,14 +30,8 @@ import java.util.List;
  * @since 2021-05-14
  */
 @RestController
-@RequestMapping("/sys-menu")
+@RequestMapping("/sys/menu")
 public class SysMenuController extends BaseController {
-    @Autowired
-    private SysUserService sysUserService;
-    @Autowired
-    private SysMenuService sysMenuService;
-     @Autowired
-    private SysRoleMenuService sysRoleMenuService;
     /**
 	 * 用户当前用户的菜单和权限信息
 	 * @param principal

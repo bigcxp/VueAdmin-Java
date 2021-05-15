@@ -56,7 +56,7 @@ public class MybatisPlusCodeGenerator {
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("meehoo");
+        dsc.setPassword("root");
         mpg.setDataSource(dsc);
 
         // 包配置

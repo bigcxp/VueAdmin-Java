@@ -33,8 +33,6 @@ public class AuthController extends BaseController {
     @Autowired
     private RedisUtil redisUtil;
     @Autowired
-    private SysUserService sysUserService;
-
 
 
     /**
